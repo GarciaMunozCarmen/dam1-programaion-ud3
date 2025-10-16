@@ -34,7 +34,9 @@ public class IntroduccionArrays {
      *                     Debe tener exactamente 7 elementos.
      */
     public static void mostrarTemperaturas(int[] temperaturas) {
-            System.out.printf("Lunes: %dº%nMartes: %dº%nMiércoles: %dº%nJueves: %dº%nViernes: %dº%nSábado: %dº%nDomingo: %dº", temperaturas[0], temperaturas[1],temperaturas[2], temperaturas[3], temperaturas[4], temperaturas[5], temperaturas[6]);
+            for(int i=0; i < temperaturas.length; i++){
+                System.out.println(temperaturas[i]);
+            }
     }
 
     /**
