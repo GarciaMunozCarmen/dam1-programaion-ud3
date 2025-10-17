@@ -33,7 +33,7 @@ public class CarritoSuma {
     public static double totalCarrito(Producto[] carrito) {
         double total = 0;
         for (Producto producto : carrito) {
-            total = total + producto.getPrecio();
+            total += producto.getPrecio();
         }
         return total;
     }
@@ -53,9 +53,9 @@ public class CarritoSuma {
         sc.nextLine();
          Producto [] carrito = new Producto[veces];
         for( int i = 0 ; i < veces; i++ ){
-            System.out.print("introduce nombre del producto: ");
+            System.out.print("Introduce nombre del producto: ");
             String nombre = sc.nextLine();
-            System.out.print("introduce precio del producto: ");
+            System.out.print("Introduce precio del producto: ");
             double precio = sc.nextDouble();
             sc.nextLine();
             carrito[i]=new Producto(nombre, precio);
