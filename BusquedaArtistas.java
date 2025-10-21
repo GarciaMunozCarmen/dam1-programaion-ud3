@@ -35,15 +35,12 @@ public class BusquedaArtistas {
      * @return índice (0..n-1) o -1 si no existe
      */
     public static int indiceDe(Artista[] cartel, String nombreBuscado) {
-        int indice = 0;
         for(int i = 0; i < cartel.length; i++){
             if(cartel[i].getNombre().equalsIgnoreCase(nombreBuscado)){
-                indice = i;
-            }else{
-                indice = -1;
+                return i;
             }
         }
-        return indice ;
+        return -1 ;
     }
 
     /**
@@ -53,15 +50,12 @@ public class BusquedaArtistas {
      * @return true si existe, false en caso contrario
      */
     public static boolean existe(Artista[] cartel, String nombreBuscado) {
-        boolean existe = false;
         for(int i = 0; i < cartel.length; i++){
             if(cartel[i].getNombre().equalsIgnoreCase(nombreBuscado)){
-                existe = true;
-            }else{
-                existe = false;
+                return true;
             }
         }
-        return existe;
+        return false;
     }
 
     /**
