@@ -77,7 +77,7 @@ public class BusquedaArtistas {
         for(int i = 0; i < cartel.length; i++){
             if(cartel[i].getNombre().equalsIgnoreCase(nombreBuscado)){
                 t++;
-                indice[t] = i;
+                indice[t-1] = i;
             }
         }
         if(t == 0){
@@ -94,8 +94,25 @@ public class BusquedaArtistas {
      * @return array con índices de artistas que empiezan por esa letra
      */
     public static int[] indicesPorInicial(Artista[] cartel, char inicial) {
-        
-        return new int[0];
+        if(inicial == '\u0000'){
+            inicial = 'A';
+        }
+        int t = 0;
+        inicial = Character.toLowerCase(inicial);
+        for(int i = 0; i < cartel.length; i++){
+            if(cartel[i].getNombre().toLowerCase().charAt(0) == inicial){
+                t++;
+            }
+        }
+        int [] indice = new int[t];
+        t = 0;
+        for(int i = 0; i < cartel.length; i++){
+            if(cartel[i].getNombre().toLowerCase().charAt(0) == inicial){
+                t++;
+                indice[t-1] = i;
+            }
+        }
+        return indice;
     }
 
     /**
@@ -115,7 +132,9 @@ public class BusquedaArtistas {
      * Si el array de índices está vacío, no imprime nada.
      */
     public static void mostrarArtistas(Artista[] cartel, int[] indices) {
-      
+      for(int i = 0; i < indices.length; i++){
+        System.out.println(cartel[indices[i]]);
+      }
     }
 
     // ------------------------------------------------------------
