@@ -50,12 +50,7 @@ public class BusquedaArtistas {
      * @return true si existe, false en caso contrario
      */
     public static boolean existe(Artista[] cartel, String nombreBuscado) {
-        for(int i = 0; i < cartel.length; i++){
-            if(cartel[i].getNombre().equalsIgnoreCase(nombreBuscado)){
-                return true;
-            }
-        }
-        return false;
+        return indiceDe(cartel, nombreBuscado) != -1; //(!=)--> distinto de (==)--> igual a
     }
 
     /**
@@ -76,12 +71,8 @@ public class BusquedaArtistas {
         t = 0;
         for(int i = 0; i < cartel.length; i++){
             if(cartel[i].getNombre().equalsIgnoreCase(nombreBuscado)){
-                t++;
-                indice[t-1] = i;
+                indice[t++] = i;
             }
-        }
-        if(t == 0){
-            indice = new int[0];
         }
         return indice;
     }
@@ -108,8 +99,7 @@ public class BusquedaArtistas {
         t = 0;
         for(int i = 0; i < cartel.length; i++){
             if(cartel[i].getNombre().toLowerCase().charAt(0) == inicial){
-                t++;
-                indice[t-1] = i;
+                indice[t++] = i;
             }
         }
         return indice;
@@ -121,8 +111,30 @@ public class BusquedaArtistas {
      * Si no hay, devuelve array de longitud 0.
      */
     public static int[] indicesPorInicialYSeguidores(Artista[] cartel, char inicial, int minSeguidoresMiles, int maxSeguidoresMiles) {
-       
-        return new int[0];
+        if(inicial == '\u0000'){
+            inicial = 'A';
+        }
+        // if(minSeguidoresMiles == 0){
+        //     minSeguidoresMiles =0;
+        // }
+        if(maxSeguidoresMiles == 0){
+            maxSeguidoresMiles = 1000000;
+        }
+        int t = 0;
+        inicial = Character.toLowerCase(inicial);
+        for(int i = 0; i < cartel.length; i++){
+            if(cartel[i].getNombre().toLowerCase().charAt(0) == inicial && cartel[i].getSeguidoresMiles() > minSeguidoresMiles && cartel[i].getSeguidoresMiles() < maxSeguidoresMiles){
+                t++;
+            }
+        }
+        int [] indice = new int[t];
+        t = 0;
+        for(int i = 0; i < cartel.length; i++){
+            if(cartel[i].getNombre().toLowerCase().charAt(0) == inicial && cartel[i].getSeguidoresMiles() > minSeguidoresMiles && cartel[i].getSeguidoresMiles() < maxSeguidoresMiles){
+                indice[t++] = i;
+            }
+        }
+        return indice;
     }
 
 
