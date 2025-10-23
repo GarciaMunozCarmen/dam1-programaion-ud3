@@ -68,10 +68,10 @@ public class BusquedaArtistas {
             }
         }
         int [] indice = new int[t];
-        t = 0;
+        int j = 0;
         for(int i = 0; i < cartel.length; i++){
             if(cartel[i].getNombre().equalsIgnoreCase(nombreBuscado)){
-                indice[t++] = i;
+                indice[j++] = i;
             }
         }
         return indice;
@@ -96,10 +96,10 @@ public class BusquedaArtistas {
             }
         }
         int [] indice = new int[t];
-        t = 0;
+        int j = 0;
         for(int i = 0; i < cartel.length; i++){
             if(cartel[i].getNombre().toLowerCase().charAt(0) == inicial){
-                indice[t++] = i;
+                indice[j++] = i;
             }
         }
         return indice;
@@ -128,10 +128,10 @@ public class BusquedaArtistas {
             }
         }
         int [] indice = new int[t];
-        t = 0;
+        int j = 0;
         for(int i = 0; i < cartel.length; i++){
             if(cartel[i].getNombre().toLowerCase().charAt(0) == inicial && cartel[i].getSeguidoresMiles() > minSeguidoresMiles && cartel[i].getSeguidoresMiles() < maxSeguidoresMiles){
-                indice[t++] = i;
+                indice[j++] = i;
             }
         }
         return indice;
